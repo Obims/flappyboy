@@ -39,24 +39,25 @@
     }
     #start-btn:hover, #music-btn:hover { background: #d5f3ff; }
     #game-area {
-  position: relative;
-  margin: 24px auto;
-  width: 320px;
-  height: 480px;
-  background: #cbe7ff; /* fallback */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #cbe7ff;
   overflow: hidden;
-  border-radius: 22px;
-  box-shadow: 0 8px 40px #6b90be88;
-  border: 4px solid #fff;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
   touch-action: manipulation;
   display: none;
+  z-index: 10;
 }
 
 /* Layer langit (belakang) */
 #bg-sky {
   position: absolute;
   left: 0; top: 0;
-  width: 100%; height: 100%;
+  width: 100vw; height: 100vh;
   background: url('bg-sky.png') repeat-x 0 0/cover;
   z-index: 0;
   pointer-events: none;
@@ -64,7 +65,7 @@
 #bg-building {
   position: absolute;
   left: 0; top: 0;
-  width: 100%; height: 100%;
+  width: 100vw; height: 100vh;
   background: url('bg-building.png') repeat-x 0 0/cover;
   z-index: 1;
   pointer-events: none;
@@ -74,7 +75,7 @@
 #bg-awan {
   position: absolute;
   left: 0; top: 0;
-  width: 100%; height: 100%;
+  width: 100vw; height: 100vh;
   background: url('bg-awan.png') repeat-x 0 0/cover;
   z-index: 2;
   pointer-events: none;

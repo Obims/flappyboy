@@ -118,6 +118,7 @@
       cursor: pointer;
       display: none;
     }
+    #game-area, #score-bar { display: none !important; }
   </style>
 </head>
 <body>
@@ -170,8 +171,8 @@
     // Klik Mulai Game
     startBtn.onclick = () => {
       startMenu.style.display = 'none';
-      gameArea.style.display = '';
-      scoreBar.style.display = '';
+      gameArea.style.display = 'block';
+      scoreBar.style.display = 'block';
       startGame();
       if(musikOn) {
         audio.volume = 0.4;

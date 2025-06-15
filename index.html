@@ -126,7 +126,18 @@ const musicBtn = document.getElementById('music-btn');
 const audio = document.getElementById('bg-music');
 
 let musikOn = true; // status musik hidup/mati
-
+// Untuk tombol di gameplay
+const musicBtn = document.getElementById('music-btn');
+musicBtn.onclick = () => {
+  musikOn = !musikOn;
+  if (musikOn) {
+    audio.play();
+    musicBtn.textContent = '🔊 Musik';
+  } else {
+    audio.pause();
+    musicBtn.textContent = '🔇 Musik';
+  }
+};
 // Klik tombol mulai: tampilkan game, hilangkan start menu
 startBtn.onclick = () => {
   startMenu.style.display = 'none';

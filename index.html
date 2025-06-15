@@ -4,6 +4,38 @@
   <title>Flappy Boy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    #start-menu {
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(180deg,#a8edea 0%,#fed6e3 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 99;
+}
+#start-menu h1 {
+  margin-top: 48px;
+  font-size: 2.2em;
+  color: #2d3748;
+  text-shadow: 0 3px 12px #fff;
+}
+#start-btn, #music-btn {
+  font-size: 1.2em;
+  padding: 12px 36px;
+  margin: 8px;
+  border: none;
+  border-radius: 14px;
+  background: #fffbe6;
+  color: #222;
+  box-shadow: 0 2px 8px #fcb69f55;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.14s;
+}
+#start-btn:hover, #music-btn:hover { background: #d5f3ff; }
     body { background: linear-gradient(180deg,#a8edea 0%,#fed6e3 100%); text-align:center; }
     #game-area {
       position: relative;
@@ -82,7 +114,47 @@
     <div id="bird"><img src="superman.png" width="42" height="42"></div>
     <div id="game-over">GAME OVER<br><button id="reset-btn">Reset</button></div>
   </div>
+  <audio id="bg-music" src="bg-music.mp3" loop></audio>
   <script>
+    // Start menu logic
+const startMenu = document.getElementById('start-menu');
+const gameArea = document.getElementById('game-area');
+const startBtn = document.getElementById('start-btn');
+const musicBtn = document.getElementById('music-btn');
+const audio = document.getElementById('bg-music');
+
+let musikOn = true; // status musik hidup/mati
+
+// Klik tombol mulai: tampilkan game, hilangkan start menu
+startBtn.onclick = () => {
+  startMenu.style.display = 'none';
+  gameArea.style.display = '';
+  startGame(); // fungsi untuk mulai game seperti biasa
+  // Play music jika musikOn
+  if(musikOn) {
+    audio.volume = 0.4;
+    audio.play();
+  }
+};
+
+// Tombol musik on/off
+musicBtn.onclick = () => {
+  musikOn = !musikOn;
+  if(musikOn) {
+    audio.play();
+    musicBtn.textContent = '🔊 Musik';
+  } else {
+    audio.pause();
+    musicBtn.textContent = '🔇 Musik';
+  }
+};
+
+// (Optional) Paksa musik dimulai saat user interaksi pertama, untuk iOS/Android/Chrome
+window.addEventListener('click', playMusicOnce, {once:true});
+window.addEventListener('keydown', playMusicOnce, {once:true});
+function playMusicOnce() {
+  if(musikOn) audio.play();
+}
     // Ukuran arena
     const areaW = 320, areaH = 480;
     // Burung

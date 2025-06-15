@@ -61,6 +61,14 @@
   z-index: 0;
   pointer-events: none;
 }
+#bg-building {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: url('bg-building.png') repeat-x 0 0/cover;
+  z-index: 1;
+  pointer-events: none;
+}
 
 /* Layer awan/gunung (depan, transparan) */
 #bg-awan {
@@ -68,7 +76,7 @@
   left: 0; top: 0;
   width: 100%; height: 100%;
   background: url('bg-awan.png') repeat-x 0 0/cover;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -141,6 +149,7 @@
   <!-- Game Area -->
   <div id="game-area">
     <div id="bg-sky"></div>
+    <div id="bg-building"></div>
   <div id="bg-awan"></div>
     <div id="bird"><img src="superman.png" width="42" height="42"></div>
     <div id="game-over">GAME OVER<br><button id="reset-btn">Reset</button></div>
@@ -234,15 +243,18 @@
     }
 let bgX1 = 0; // bg-sky (belakang)
 let bgX2 = 0; // bg-awan (depan)
+let bgX3 = 0;
     function gameLoop() {
       if (!running) return;
       // Gerakkan background layer belakang (pelan)
-bgX1 -= 0.25; // Semakin kecil, semakin pelan
+bgX1 -= 0.16; // Semakin kecil, semakin pelan
 document.getElementById('bg-sky').style.backgroundPosition = `${bgX1}px 0`;
+bgX2 -= 0.32; // Semakin kecil, semakin pelan
+document.getElementById('bg-building').style.backgroundPosition = `${bgX2}px 0`;
 
 // Gerakkan background layer depan (awan/gunung)
-bgX2 -= 0.7; // Lebih cepat dari belakang, tapi tetap pelan dibanding pipa
-document.getElementById('bg-awan').style.backgroundPosition = `${bgX2}px 0`;
+bgX3 -= 0.58; // Lebih cepat dari belakang, tapi tetap pelan dibanding pipa
+document.getElementById('bg-awan').style.backgroundPosition = `${bgX3}px 0`;
       birdVel += gravity;
       birdY += birdVel;
       birdElem.style.top = birdY + 'px';

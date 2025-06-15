@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flappy Bird Clone</title>
+  <title>Flappy Boy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { background: linear-gradient(180deg,#a8edea 0%,#fed6e3 100%); text-align:center; }
@@ -70,7 +70,7 @@
   </style>
 </head>
 <body>
-  <h2 style="margin-top:28px;">Flappy Bird Clone 🐤</h2>
+  <h2 style="margin-top:28px;">Flappy Boy🦸🏻‍♂️</h2>
   <div id="score-bar">Score: <span id="score">0</span></div>
   <div id="game-area">
     <div id="bird"><img src="superman.png" width="42" height="42"></div>
@@ -84,7 +84,7 @@
     let birdY = 180, birdVel = 0;
     // Pipa
     let pipes = [];
-    let score = 0, running = false, gravity = 0.30, jump = -5, gap = 160;
+    let score = 0, running = false, gravity = 0.27, jump = -5, gap = 160;
     const area = document.getElementById('game-area');
     const scoreElem = document.getElementById('score');
     const gameOverElem = document.getElementById('game-over');

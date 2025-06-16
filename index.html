@@ -299,7 +299,7 @@
         pipes[0].bottom.remove();
         pipes.shift();
       }
-      if (pipes.length < 3 && pipes[pipes.length-1].x < areaW - areaW * 0.7) spawnPipe();
+      if (pipes.length < 3 && pipes[pipes.length-1].x < areaW - areaW * 0.6) spawnPipe();
       window.loop = requestAnimationFrame(gameLoop);
     }
 
